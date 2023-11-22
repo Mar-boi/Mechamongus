@@ -1,6 +1,7 @@
 "user client";
 import { Rating } from "@mui/material";
 import Image from "next/image";
+var test;
 
 interface productDetailsProps {
   product: any;
