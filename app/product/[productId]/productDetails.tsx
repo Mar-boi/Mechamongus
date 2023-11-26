@@ -64,12 +64,14 @@ const ProductDetails: React.FC<productDetailsProps> = ({ product }) => {
         className=" overflow-hidden
      relative w-full"
       >
-        <Image
+        Image ค่อยมาทำ
+        {/* <Image
           src={product.images[0].image}
           fill
           alt={product.name}
           className=" w-full h-full object-contain"
-        />
+          //style={{ position: "relative" }}
+        /> */}
       </div>
       <div className=" flex flex-col gap-1 text-slate-500 text-sm">
         <h2 className=" text-3xl font-medium text-slate-700">{product.name}</h2>
