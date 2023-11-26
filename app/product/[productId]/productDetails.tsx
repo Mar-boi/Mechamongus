@@ -1,19 +1,62 @@
 "user client";
+import SetColor from "@/app/components/products/SetColor";
 import { Rating } from "@mui/material";
 import Image from "next/image";
+import { type } from "os";
+import { useCallback, useState } from "react";
 
 interface productDetailsProps {
   product: any;
 }
+
+export type CartProductType = {
+  id: string;
+  name: string;
+  desscription: string;
+  category: string;
+  brand: string;
+  selectedImg: SelectedImgType;
+  qty: number;
+  price: number;
+};
+
+export type SelectedImgType = {
+  color: string;
+  colorCode: string;
+  image: string;
+};
 
 const Horizontal = () => {
   return <hr className=" w-[30% my-2]" />;
 };
 
 const ProductDetails: React.FC<productDetailsProps> = ({ product }) => {
+  const [cartProduct, setCartProduct] = useState<CartProductType>({
+    id: product.id,
+    name: product.name,
+    desscription: product.description,
+    category: product.category,
+    brand: product.brand,
+    selectedImg: { ...product.images[0] },
+    qty: 1,
+    price: product.price,
+  });
+
+  console.log(cartProduct);
   const productRating =
     product.reviews.reduce((acc: number, item: any) => item.rating + acc, 0) /
     product.reviews.length;
+
+  const handleColorSelect = useCallback(
+    (value: SelectedImgType) => {
+      setCartProduct((prev) => {
+        return { ...prev, selectedImg: value };
+      });
+    },
+    // ไม่รูปเป็นอะไร ต้องใส่ comment ข้างล่าง
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [cartProduct.selectedImg]
+  );
 
   return (
     <div className=" grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -47,7 +90,11 @@ const ProductDetails: React.FC<productDetailsProps> = ({ product }) => {
           {product.inStock ? "In stock" : "Out of stock"}
         </div>
         <Horizontal />
-        <div>Color</div>
+        <SetColor
+          cartProduct={cartProduct}
+          images={product.images}
+          handleColorSelect={handleColorSelect}
+        />
         <Horizontal />
         <div>Quality</div>
         <Horizontal />

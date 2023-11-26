@@ -1,3 +1,4 @@
+"use client";
 import Container from "@/app/components/Container";
 import { product } from "@/utils/product";
 import ProductDetails from "./productDetails";
