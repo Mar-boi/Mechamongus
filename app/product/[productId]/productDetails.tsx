@@ -1,15 +1,17 @@
 "user client";
 import SetColor from "@/app/components/products/SetColor";
+import SetQuatity from "@/app/components/products/SetQuantity";
 import { Rating } from "@mui/material";
 import Image from "next/image";
 import { type } from "os";
-import { useCallback, useState } from "react";
+import { ReactNode, useCallback, useState } from "react";
 
 interface productDetailsProps {
   product: any;
 }
 
 export type CartProductType = {
+  quantity: ReactNode;
   id: string;
   name: string;
   desscription: string;
@@ -58,6 +60,23 @@ const ProductDetails: React.FC<productDetailsProps> = ({ product }) => {
     [cartProduct.selectedImg]
   );
 
+    const handleQtyIncrease = useCallback(() => {
+      if(cartProduct.qty == 99) {
+        return;
+      }
+      setCartProduct((prev) => {
+        return {...prev, quantity: ++prev.qty};
+      });
+
+    }, [cartProduct]);
+    const handleQtyDecrease = useCallback(() => {
+      if(cartProduct.qty == 1) {
+        return;
+      }
+      setCartProduct((prev) => {
+      return {...prev, quantity: --prev.qty};
+    });}, [cartProduct]);
+
   return (
     <div className=" grid grid-cols-1 md:grid-cols-2 gap-12">
       <div
@@ -98,7 +117,11 @@ const ProductDetails: React.FC<productDetailsProps> = ({ product }) => {
           handleColorSelect={handleColorSelect}
         />
         <Horizontal />
-        <div>Quality</div>
+        <SetQuatity
+        cartProduct={cartProduct}
+        handleQtyIncrease={handleQtyIncrease}
+        handleQtyDecrease={handleQtyDecrease }
+        />
         <Horizontal />
         <div>Add to Cart</div>
       </div>
