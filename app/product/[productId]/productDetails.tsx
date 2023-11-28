@@ -4,7 +4,7 @@ import SetQuatity from "@/app/components/products/SetQuantity";
 import { Rating } from "@mui/material";
 import Image from "next/image";
 import { type } from "os";
-import { ReactNode, useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 
 interface productDetailsProps {
   product: any;
