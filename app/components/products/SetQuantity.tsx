@@ -1,8 +1,6 @@
 "use client";
 
 import { CartProductType } from "@/app/product/[productId]/productDetails";
-//ตอนกดเพิ่มลดมันยังบัคๆอยู่
-//ปุ่มเพิ่มลดยังเล็กอยู่
 interface SetQtyProps {
   cartCounter?: boolean;
   cartProduct: CartProductType;
