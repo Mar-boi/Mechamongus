@@ -1,5 +1,6 @@
 "user client";
 import Button from "@/app/components/Button";
+import ProductImage from "@/app/components/products/ProductImage";
 import SetColor from "@/app/components/products/SetColor";
 import SetQuatity from "@/app/components/products/SetQuantity";
 import { Rating } from "@mui/material";
@@ -80,19 +81,11 @@ const ProductDetails: React.FC<productDetailsProps> = ({ product }) => {
 
   return (
     <div className=" grid grid-cols-1 md:grid-cols-2 gap-12">
-      <div
-        className=" overflow-hidden
-     relative w-full"
-      >
-        Image ค่อยมาทำ
-        {/* <Image
-          src={product.images[0].image}
-          fill
-          alt={product.name}
-          className=" w-full h-full object-contain"
-          //style={{ position: "relative" }}
-        /> */}
-      </div>
+      <ProductImage
+        cartProduct={cartProduct}
+        product={product}
+        handleColorSelect={handleColorSelect}
+      />
       <div className=" flex flex-col gap-1 text-slate-500 text-sm">
         <h2 className=" text-3xl font-medium text-slate-700">{product.name}</h2>
         <div className=" flex items-center gap-2">
@@ -125,9 +118,7 @@ const ProductDetails: React.FC<productDetailsProps> = ({ product }) => {
         />
         <Horizontal />
         <div className="max-w-[300px]">
-          <Button outline
-          label="Add To Cart" onClick={() =>{}}
-          />
+          <Button outline label="Add To Cart" onClick={() => {}} />
         </div>
       </div>
     </div>
