@@ -6,14 +6,14 @@ import SetQuatity from "@/app/components/products/SetQuantity";
 import { Rating } from "@mui/material";
 import Image from "next/image";
 import { type } from "os";
-import { ReactNode, useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 
 interface productDetailsProps {
   product: any;
 }
 
 export type CartProductType = {
-  quantity: ReactNode;
+  quantity: number;
   id: string;
   name: string;
   desscription: string;
@@ -44,6 +44,7 @@ const ProductDetails: React.FC<productDetailsProps> = ({ product }) => {
     selectedImg: { ...product.images[0] },
     qty: 1,
     price: product.price,
+    quantity: 1,
   });
 
   console.log(cartProduct);
@@ -62,22 +63,22 @@ const ProductDetails: React.FC<productDetailsProps> = ({ product }) => {
     [cartProduct.selectedImg]
   );
 
-    const handleQtyIncrease = useCallback(() => {
-      if(cartProduct.qty == 99) {
-        return;
-      }
-      setCartProduct((prev) => {
-        return {...prev, quantity: ++prev.qty};
-      });
-
-    }, [cartProduct]);
-    const handleQtyDecrease = useCallback(() => {
-      if(cartProduct.qty == 1) {
-        return;
-      }
-      setCartProduct((prev) => {
-      return {...prev, quantity: --prev.qty};
-    });}, [cartProduct]);
+  const handleQtyIncrease = useCallback(() => {
+    if (cartProduct.quantity == 99) {
+      return;
+    }
+    setCartProduct((prev) => {
+      return { ...prev, qty: ++prev.quantity };
+    });
+  }, [cartProduct]);
+  const handleQtyDecrease = useCallback(() => {
+    if (cartProduct.quantity == 1) {
+      return;
+    }
+    setCartProduct((prev) => {
+      return { ...prev, qty: --prev.quantity };
+    });
+  }, [cartProduct]);
 
   return (
     <div className=" grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -112,9 +113,9 @@ const ProductDetails: React.FC<productDetailsProps> = ({ product }) => {
         />
         <Horizontal />
         <SetQuatity
-        cartProduct={cartProduct}
-        handleQtyIncrease={handleQtyIncrease}
-        handleQtyDecrease={handleQtyDecrease }
+          cartProduct={cartProduct}
+          handleQtyIncrease={handleQtyIncrease}
+          handleQtyDecrease={handleQtyDecrease}
         />
         <Horizontal />
         <div className="max-w-[300px]">
