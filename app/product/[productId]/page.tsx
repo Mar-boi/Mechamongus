@@ -4,6 +4,8 @@ import { product } from "@/utils/product";
 import ProductDetails from "./productDetails";
 import ListRating from "./ListRating";
 
+
+
 interface IParams {
   productId?: string;
 }
