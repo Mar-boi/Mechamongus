@@ -4,8 +4,6 @@ import ProductImage from "@/app/components/products/ProductImage";
 import SetColor from "@/app/components/products/SetColor";
 import SetQuatity from "@/app/components/products/SetQuantity";
 import { Rating } from "@mui/material";
-import Image from "next/image";
-import { type } from "os";
 import { useCallback, useState } from "react";
 
 interface productDetailsProps {
