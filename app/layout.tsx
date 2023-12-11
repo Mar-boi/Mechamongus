@@ -5,6 +5,7 @@ import NavBar from "./components/nav/NavBar";
 //import { text } from 'stream/consumers'
 import Footer from "./components/footer/Footer";
 import CartProvider from "@/provider/CartPovider";
+import { Toaster } from "react-hot-toast";
 
 const google_font = Josefin_Sans({
   subsets: ["latin"],
@@ -24,6 +25,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${google_font.className} text-slate-700`}>
+        <Toaster
+          toastOptions={{
+            style: {
+              background: "rgb(51,65,85)",
+              color: "#fff",
+            },
+          }}
+        />
         <CartProvider>
           <div className="flex flex-col min-h-screen">
             <NavBar />
