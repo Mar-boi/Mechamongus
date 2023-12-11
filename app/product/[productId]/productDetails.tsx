@@ -3,6 +3,7 @@ import Button from "@/app/components/Button";
 import ProductImage from "@/app/components/products/ProductImage";
 import SetColor from "@/app/components/products/SetColor";
 import SetQuatity from "@/app/components/products/SetQuantity";
+import { useCart } from "@/hook/useCart";
 import { Rating } from "@mui/material";
 import { useCallback, useState } from "react";
 
@@ -33,6 +34,7 @@ const Horizontal = () => {
 };
 
 const ProductDetails: React.FC<productDetailsProps> = ({ product }) => {
+  const { cartTotalQty } = useCart();
   const [cartProduct, setCartProduct] = useState<CartProductType>({
     id: product.id,
     name: product.name,
@@ -45,7 +47,7 @@ const ProductDetails: React.FC<productDetailsProps> = ({ product }) => {
     quantity: 1,
   });
 
-  console.log(cartProduct);
+  console.log(cartTotalQty);
   const productRating =
     product.reviews.reduce((acc: number, item: any) => item.rating + acc, 0) /
     product.reviews.length;
