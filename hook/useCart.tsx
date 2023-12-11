@@ -1,5 +1,11 @@
 import { CartProductType } from "@/app/product/[productId]/productDetails";
-import { createContext, useCallback, useContext, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 type CartContextType = {
   cartTotalQty: number;
@@ -18,15 +24,26 @@ export const CartContextProvider = (props: Props) => {
   const [cartProducts, setCartProducts] = useState<CartProductType[] | null>(
     null
   );
+  useEffect(() => {
+    const cartItems: any = localStorage.getItem("Mechamongus_CartItems");
+    const cProducts: CartProductType[] | null = JSON.parse(cartItems);
+
+    setCartProducts(cProducts);
+  }, []);
+
   const handleAddProductToCart = useCallback((product: CartProductType) => {
     setCartProducts((prev) => {
-      let updatedcart;
+      let updatedCart;
       if (prev) {
-        updatedcart = [...prev, product];
+        updatedCart = [...prev, product];
       } else {
-        updatedcart = [product];
+        updatedCart = [product];
       }
-      return updatedcart;
+      localStorage.setItem(
+        "Mechamongus_CartItems",
+        JSON.stringify(updatedCart)
+      );
+      return updatedCart;
     });
   }, []);
   const value = {
