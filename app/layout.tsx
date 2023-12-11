@@ -4,6 +4,7 @@ import { Josefin_Sans } from "next/font/google";
 import NavBar from "./components/nav/NavBar";
 //import { text } from 'stream/consumers'
 import Footer from "./components/footer/Footer";
+import CartProvider from "@/provider/CartPovider";
 
 const google_font = Josefin_Sans({
   subsets: ["latin"],
@@ -23,11 +24,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${google_font.className} text-slate-700`}>
-        <div className="flex flex-col min-h-screen">
-          <NavBar />
-          <main className="flex-grow">{children}</main>
-          <Footer />
-        </div>
+        <CartProvider>
+          <div className="flex flex-col min-h-screen">
+            <NavBar />
+            <main className="flex-grow">{children}</main>
+            <Footer />
+          </div>
+        </CartProvider>
       </body>
     </html>
   );
