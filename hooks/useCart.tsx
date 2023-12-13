@@ -13,7 +13,6 @@ type CartContextType = {
   cartTotalQty: number;
   cartProducts: CartProductType[] | null;
   handleAddProductToCart: (product: CartProductType) => void;
-  //ถ้าเอาออก value บรรทัด 75 แดง
   handleRemoveProductFromCart: (product: CartProductType) => void;
 };
 
