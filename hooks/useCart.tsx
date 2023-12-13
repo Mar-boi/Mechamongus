@@ -52,26 +52,29 @@ export const CartContextProvider = (props: Props) => {
     });
   }, []);
 
-  const handleRemoveProductFromCart = useCallback((
-      product:CartProductType
-    ) => {
-      if(cartProducts){
-        const filteredProducts= cartProducts.filter((item) => {
-          return item.id != product.id
-        })
+  const handleRemoveProductFromCart = useCallback(
+    (product: CartProductType) => {
+      if (cartProducts) {
+        const filteredProducts = cartProducts.filter((item) => {
+          return item.id != product.id;
+        });
 
-        setCartProducts(filteredProducts)
+        setCartProducts(filteredProducts);
         toast.success("Product remove");
-      localStorage.setItem(
-        "Mechamongus_CartItems",
-        JSON.stringify(filteredProducts));
+        localStorage.setItem(
+          "Mechamongus_CartItems",
+          JSON.stringify(filteredProducts)
+        );
       }
-    },[cartProducts])
+    },
+    [cartProducts]
+  );
 
   const value = {
     cartTotalQty,
     cartProducts,
     handleAddProductToCart,
+    handleRemoveProductFromCart,
   };
   return <CartContext.Provider value={value} {...props} />;
 };
