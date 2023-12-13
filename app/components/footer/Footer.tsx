@@ -32,7 +32,7 @@ const Footer = () => {
             <h3 className="text-base font-bold mb-6">About Us</h3>
             <p>Computer Assesories Ecommerce-Website</p>
             <p>
-              &copy; {new Date().getFullYear()} Mechamongus. All rigths reserved{" "}
+              &copy; {new Date().getFullYear()} Mechamongus. All rights reserved{" "}
             </p>
           </div>
           <FooterList>

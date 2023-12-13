@@ -19,7 +19,7 @@ const CartClient = () => {
             className="text-slate-500 flex items-center gap-1 mt-2"
           >
             <MdArrowBack />
-            <span>Start Shoppoing</span>
+            <span>Start Shopping</span>
           </Link>
         </div>
       </div>
@@ -58,7 +58,7 @@ const CartClient = () => {
             className="text-slate-500 flex items-center gap-1 mt-2"
           >
             <MdArrowBack />
-            <span>Continue Shoppoing</span>
+            <span>Continue Shopping</span>
           </Link>
         </div>
       </div>

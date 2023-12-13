@@ -2,7 +2,7 @@
 import Button from "@/app/components/Button";
 import ProductImage from "@/app/components/products/ProductImage";
 import SetColor from "@/app/components/products/SetColor";
-import SetQuatity from "@/app/components/products/SetQuantity";
+import SetQuantity from "@/app/components/products/SetQuantity";
 import { useCart } from "@/hooks/useCart";
 import { Rating } from "@mui/material";
 import { useRouter } from "next/navigation";
@@ -17,7 +17,7 @@ export type CartProductType = {
   quantity: number;
   id: string;
   name: string;
-  desscription: string;
+  description: string;
   category: string;
   brand: string;
   selectedImg: SelectedImgType;
@@ -42,7 +42,7 @@ const ProductDetails: React.FC<productDetailsProps> = ({ product }) => {
   const [cartProduct, setCartProduct] = useState<CartProductType>({
     id: product.id,
     name: product.name,
-    desscription: product.description,
+    description: product.description,
     category: product.category,
     brand: product.brand,
     selectedImg: { ...product.images[0] },
@@ -58,10 +58,10 @@ const ProductDetails: React.FC<productDetailsProps> = ({ product }) => {
   useEffect(() => {
     setIsProductInCart(false);
     if (cartProducts) {
-      const existtingindex = cartProducts.findIndex(
+      const existing_index = cartProducts.findIndex(
         (item) => item.id == product.id
       );
-      if (existtingindex > -1) {
+      if (existing_index > -1) {
         setIsProductInCart(true);
       }
     }
@@ -147,7 +147,7 @@ const ProductDetails: React.FC<productDetailsProps> = ({ product }) => {
               handleColorSelect={handleColorSelect}
             />
             <Horizontal />
-            <SetQuatity
+            <SetQuantity
               cartProduct={cartProduct}
               handleQtyIncrease={handleQtyIncrease}
               handleQtyDecrease={handleQtyDecrease}

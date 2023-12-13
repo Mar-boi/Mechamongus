@@ -1,9 +1,9 @@
-import { formatPrice } from "@/utils/fomatPrice";
+import { formatPrice } from "@/utils/formatPrice";
 import { CartProductType } from "../product/[productId]/productDetails";
 import Link from "next/link";
 import { truncateText } from "@/utils/truncateText";
 import Image from "next/image";
-import SetQuatity from "../components/products/SetQuantity";
+import SetQuantity from "../components/products/SetQuantity";
 import { useCart } from "@/hooks/useCart";
 
 interface ItemContentProps {
@@ -43,7 +43,7 @@ const ItemContent: React.FC<ItemContentProps> = ({ item }) => {
       </div>
       <div className="justify-self-center">{formatPrice(item.price)}</div>
       <div className="justify-self-center">
-        <SetQuatity
+        <SetQuantity
           cartCounter={true}
           cartProduct={item}
           handleQtyIncrease={() => {}}

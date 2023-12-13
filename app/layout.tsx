@@ -4,7 +4,7 @@ import { Josefin_Sans } from "next/font/google";
 import NavBar from "./components/nav/NavBar";
 //import { text } from 'stream/consumers'
 import Footer from "./components/footer/Footer";
-import CartProvider from "@/provider/CartPovider";
+import CartProvider from "@/provider/CartProvider";
 import { Toaster } from "react-hot-toast";
 
 const google_font = Josefin_Sans({
