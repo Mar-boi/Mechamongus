@@ -92,7 +92,10 @@ export const CartContextProvider = (props: Props) => {
         }
 
         setCartProducts(updateCart);
-        localStorage.setItem("mechamongus", JSON.stringify(updateCart));
+        localStorage.setItem(
+          "Mechamongus_CartItems",
+          JSON.stringify(updateCart)
+        );
       }
     },
     [cartProducts]
@@ -117,7 +120,10 @@ export const CartContextProvider = (props: Props) => {
         }
 
         setCartProducts(updateCart);
-        localStorage.setItem("mechamongus", JSON.stringify(updateCart));
+        localStorage.setItem(
+          "Mechamongus_CartItems",
+          JSON.stringify(updateCart)
+        );
       }
     },
     [cartProducts]
@@ -126,7 +132,7 @@ export const CartContextProvider = (props: Props) => {
   const handleClearCart = useCallback(() => {
     setCartProducts(null);
     setCartTotalQty(0);
-    localStorage.setItem("mechamongus", JSON.stringify(null));
+    localStorage.setItem("Mechamongus_CartItems", JSON.stringify(null));
   }, [cartProducts]);
 
   const value = {
