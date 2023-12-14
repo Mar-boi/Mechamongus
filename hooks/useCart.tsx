@@ -1,5 +1,6 @@
 import { CartProductType } from "@/app/product/[productId]/productDetails";
 import { product } from "@/utils/product";
+import { Jacques_Francois } from "next/font/google";
 import {
   createContext,
   useCallback,
@@ -15,6 +16,8 @@ type CartContextType = {
   handleAddProductToCart: (product: CartProductType) => void;
   handleRemoveProductFromCart: (product: CartProductType) => void;
   handleCartQtyIncrease: (product: CartProductType) => void;
+  handleCartQtyDecrease: (product: CartProductType) => void;
+  handleClearCart: () => void;
 };
 
 export const CartContext = createContext<CartContextType | null>(null);
@@ -95,12 +98,45 @@ export const CartContextProvider = (props: Props) => {
     [cartProducts]
   );
 
+  const handleCartQtyDecrease = useCallback(
+    (product: CartProductType) => {
+      if (product.quantity == 1) {
+        return toast.error("Ooop! Minimum reached");
+      }
+
+      if (cartProducts) {
+        const updateCart = [...cartProducts];
+
+        const existing_index = cartProducts.findIndex(
+          (item) => item.id == product.id
+        );
+
+        if (existing_index > -1) {
+          updateCart[existing_index].quantity = --updateCart[existing_index]
+            .quantity;
+        }
+
+        setCartProducts(updateCart);
+        localStorage.setItem("mechamongus", JSON.stringify(updateCart));
+      }
+    },
+    [cartProducts]
+  );
+
+  const handleClearCart = useCallback(() => {
+    setCartProducts(null);
+    setCartTotalQty(0);
+    localStorage.setItem("mechamongus", JSON.stringify(null));
+  }, [cartProducts]);
+
   const value = {
     cartTotalQty,
     cartProducts,
     handleAddProductToCart,
     handleRemoveProductFromCart,
     handleCartQtyIncrease,
+    handleCartQtyDecrease,
+    handleClearCart,
   };
   return <CartContext.Provider value={value} {...props} />;
 };
