@@ -1,5 +1,5 @@
 import { CartProductType } from "@/app/product/[productId]/productDetails";
-import { product } from "@/utils/product";
+import { products } from "@/utils/products";
 import { Jacques_Francois } from "next/font/google";
 import {
   createContext,
@@ -12,7 +12,7 @@ import toast, { Toast } from "react-hot-toast";
 
 type CartContextType = {
   cartTotalQty: number;
-  cartTotalAmount : number;
+  cartTotalAmount: number;
   cartProducts: CartProductType[] | null;
   handleAddProductToCart: (product: CartProductType) => void;
   handleRemoveProductFromCart: (product: CartProductType) => void;
@@ -28,15 +28,14 @@ interface Props {
 }
 
 export const CartContextProvider = (props: Props) => {
-  const [cartTotalQty, setCartTotalQty] = useState
-  (10);
-  const [cartTotalAmout,setCartTotalAmout] = useState(0)
+  const [cartTotalQty, setCartTotalQty] = useState(0);
+  const [cartTotalAmount, setCartTotalAmount] = useState(0);
   const [cartProducts, setCartProducts] = useState<CartProductType[] | null>(
     null
   );
 
-    console.log('qty',cartTotalQty)
-    console.log('amount',cartTotalAmout)
+  console.log("qty", cartTotalQty);
+  console.log("amount", cartTotalAmount);
 
   useEffect(() => {
     const cartItems: any = localStorage.getItem("Mechamongus_CartItems");
@@ -45,32 +44,31 @@ export const CartContextProvider = (props: Props) => {
     setCartProducts(cProducts);
   }, []);
 
-  useEffect(()=>{
-    const gettotals = () =>{
+  useEffect(() => {
+    const getTotals = () => {
+      if (cartProducts) {
+        const { total, qty } = cartProducts?.reduce(
+          (acc, item) => {
+            const itemTotal = item.price * item.quantity;
 
-      if(cartProducts){
-         const {total, qty} = cartProducts?.reduce((acc, item)=>{
-        const itemTotal = item.price * item.quantity
+            acc.total += itemTotal;
+            acc.qty += item.quantity;
 
-        acc.total += itemTotal
-        acc.qty += item.quantity
+            return acc;
+          },
+          {
+            total: 0,
+            qty: 0,
+          }
+        );
 
-        return acc
-        }, 
-        {
-         total : 0,
-         qty : 0,
-        }
-      );
-
-        setCartTotalQty(qty)
-        setCartTotalAmout(total)
+        setCartTotalQty(qty);
+        setCartTotalAmount(total);
       }
     };
 
-    gettotals()
-  },[cartProducts])
-
+    getTotals();
+  }, [cartProducts]);
 
   const handleAddProductToCart = useCallback((product: CartProductType) => {
     setCartProducts((prev) => {
@@ -167,11 +165,11 @@ export const CartContextProvider = (props: Props) => {
     setCartProducts(null);
     setCartTotalQty(0);
     localStorage.setItem("Mechamongus_CartItems", JSON.stringify(null));
-  }, [cartProducts]);
+  }, []);
 
   const value = {
     cartTotalQty,
-    cartTotalAmout,
+    cartTotalAmount,
     cartProducts,
     handleAddProductToCart,
     handleRemoveProductFromCart,

@@ -18,7 +18,7 @@ const NavBar = () => {
             </Link>
             <div className="hidden md:block">Search</div>
             <div className="flex items-center gap-8 md:gap-12">
-              <CartCount/>
+              <CartCount />
               <div>Cart Count</div>
               <div>UserMenu</div>
             </div>
