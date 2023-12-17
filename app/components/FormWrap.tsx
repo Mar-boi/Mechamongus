@@ -31,3 +31,4 @@ const FormWarp = ({ children }: { children: React.ReactNode }) => {
     </div>
   );
 };
+export default FormWarp;
