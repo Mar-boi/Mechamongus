@@ -12,6 +12,7 @@ import toast, { Toast } from "react-hot-toast";
 
 type CartContextType = {
   cartTotalQty: number;
+  cartTotalAmount : number;
   cartProducts: CartProductType[] | null;
   handleAddProductToCart: (product: CartProductType) => void;
   handleRemoveProductFromCart: (product: CartProductType) => void;
@@ -27,16 +28,49 @@ interface Props {
 }
 
 export const CartContextProvider = (props: Props) => {
-  const [cartTotalQty, setCartTotalQty] = useState(0);
+  const [cartTotalQty, setCartTotalQty] = useState
+  (10);
+  const [cartTotalAmout,setCartTotalAmout] = useState(0)
   const [cartProducts, setCartProducts] = useState<CartProductType[] | null>(
     null
   );
+
+    console.log('qty',cartTotalQty)
+    console.log('amount',cartTotalAmout)
+
   useEffect(() => {
     const cartItems: any = localStorage.getItem("Mechamongus_CartItems");
     const cProducts: CartProductType[] | null = JSON.parse(cartItems);
 
     setCartProducts(cProducts);
   }, []);
+
+  useEffect(()=>{
+    const gettotals = () =>{
+
+      if(cartProducts){
+         const {total, qty} = cartProducts?.reduce((acc, item)=>{
+        const itemTotal = item.price * item.quantity
+
+        acc.total += itemTotal
+        acc.qty += item.quantity
+
+        return acc
+        }, 
+        {
+         total : 0,
+         qty : 0,
+        }
+      );
+
+        setCartTotalQty(qty)
+        setCartTotalAmout(total)
+      }
+    };
+
+    gettotals()
+  },[cartProducts])
+
 
   const handleAddProductToCart = useCallback((product: CartProductType) => {
     setCartProducts((prev) => {
@@ -137,6 +171,7 @@ export const CartContextProvider = (props: Props) => {
 
   const value = {
     cartTotalQty,
+    cartTotalAmout,
     cartProducts,
     handleAddProductToCart,
     handleRemoveProductFromCart,
