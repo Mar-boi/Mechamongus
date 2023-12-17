@@ -2,7 +2,7 @@ import Link from "next/link";
 import Container from "../Container";
 import { Kdam_Thmor_Pro } from "next/font/google";
 import CartCount from "./CartCount";
-const textlogoBanner = Kdam_Thmor_Pro({ subsets: ["latin"], weight: ["400"] });
+const textLogoBanner = Kdam_Thmor_Pro({ subsets: ["latin"], weight: ["400"] });
 
 const NavBar = () => {
   return (
@@ -12,7 +12,7 @@ const NavBar = () => {
           <div className="flex items-center justify-between gap-3 md:gap-0">
             <Link
               href="/"
-              className={`${textlogoBanner.className} font-bold text-2xl`}
+              className={`${textLogoBanner.className} font-bold text-2xl`}
             >
               Mechamongus
             </Link>
