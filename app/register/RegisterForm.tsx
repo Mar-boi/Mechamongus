@@ -55,10 +55,12 @@ const RegisterForm = () => {
         required
         type="password"
       />
-      <Button
-        label={isLoading ? "Loading" : "Sign UP"}
-        onClick={handleSubmit(onsubmit)}
-      />
+      <div className=" w-full">
+        <Button
+          label={isLoading ? "Loading" : "Sign UP"}
+          onClick={handleSubmit(onsubmit)}
+        />
+      </div>
       <p className=" text-sm">
         Already have an account?{" "}
         <Link className=" underline" href="/login">
