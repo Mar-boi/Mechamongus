@@ -9,7 +9,7 @@ import { signOut } from "next-auth/react";
 import BackDrops from "./BackDrops";
 
 const UserMenu = () => {
-  const { isOpen, setIsOpen } = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const toggleOpen = useCallback(() => {
     setIsOpen((prev: any) => !prev);
