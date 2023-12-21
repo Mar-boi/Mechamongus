@@ -6,6 +6,7 @@ import NavBar from "./components/nav/NavBar";
 import Footer from "./components/footer/Footer";
 import CartProvider from "@/provider/CartProvider";
 import { Toaster } from "react-hot-toast";
+import { getCurrentUser } from "@/actions/getCurrentUser";
 
 const google_font = Josefin_Sans({
   subsets: ["latin"],
@@ -17,11 +18,15 @@ export const metadata: Metadata = {
   description: "PC Ecommerce",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const currentUser = await getCurrentUser();
+
+  console.log("user<<<", currentUser);
+
   return (
     <html lang="en">
       <body className={`${google_font.className} text-slate-700`}>
