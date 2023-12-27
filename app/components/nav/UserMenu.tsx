@@ -7,8 +7,17 @@ import Link from "next/link";
 import MenuItem from "./MenuItem";
 import { signOut } from "next-auth/react";
 import BackDrops from "./BackDrops";
+import { SafeUser } from "@/types";
+import { getCurrentUser } from "@/actions/getCurrentUser";
 
-const UserMenu = () => {
+interface UserMenuProps{
+  errentUser: SafeUser | null;
+
+
+}
+
+
+const UserMenu: React.FC<UserMenuPromps> = (cerrentUser) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleOpen = useCallback(() => {
@@ -21,11 +30,12 @@ const UserMenu = () => {
           onClick={toggleOpen}
           className="p-2 border-[1px] border-slate-400 flex flex-row items-center gap-1 rounded-full cursor-pointer hover:shadow-md transition text-slate-700"
         >
-          <Avatar />
+          <Avatar src={cerrentUser?.image}/>
           <AiFillCaretDown />
         </div>
         {isOpen && (
           <div className="absolute rounded-md shadow-md w-[170px] bg-white overflow-hidden right-0 top-12 text-sm flex flex-col cursor-pointer">
+            {CurrentUser ? (
             <div>
               <Link href="/orders">
                 <MenuItem onClick={toggleOpen}>Your Orders</MenuItem>
@@ -33,6 +43,7 @@ const UserMenu = () => {
               <Link href="/admin">
                 <MenuItem onClick={toggleOpen}>Admin Dashboard</MenuItem>
               </Link>
+              <hr />
               <MenuItem
                 onClick={() => {
                   toggleOpen();
@@ -41,7 +52,8 @@ const UserMenu = () => {
               >
                 Logout
               </MenuItem>
-            </div>
+            </div> 
+            ):(
             <div>
               <Link href="/login">
                 <MenuItem onClick={toggleOpen}>Login</MenuItem>
@@ -50,6 +62,9 @@ const UserMenu = () => {
                 <MenuItem onClick={toggleOpen}>Register</MenuItem>
               </Link>
             </div>
+            )}
+           
+          
           </div>
         )}
       </div>

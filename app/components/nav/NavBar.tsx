@@ -3,9 +3,15 @@ import Container from "../Container";
 import { Kdam_Thmor_Pro } from "next/font/google";
 import CartCount from "./CartCount";
 import UserMenu from "./UserMenu";
+import  getCurrentUser  from "@/actions/getCurrentUser";
+
+
 const textLogoBanner = Kdam_Thmor_Pro({ subsets: ["latin"], weight: ["400"] });
 
 const NavBar = () => {
+  const currentUser = await getCurrentUser();
+  
+  
   return (
     <div className="sticky top-0 w-full bg-slate-200 z-30 shadow-sm">
       <div className="py-4 border-b-[1px]">
@@ -20,7 +26,7 @@ const NavBar = () => {
             <div className="hidden md:block">Search</div>
             <div className="flex items-center gap-8 md:gap-12">
               <CartCount />
-              <UserMenu />
+              <UserMenu cerrentUser = {currentUser}/>
             </div>
           </div>
         </Container>

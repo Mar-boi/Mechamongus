@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Heading from "../components/Heading";
 import Input from "../components/inputs/Input";
 import { FieldValues, useForm, SubmitHandler } from "react-hook-form";
@@ -10,8 +10,14 @@ import { AiOutlineGoogle } from "react-icons/ai";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import { SafeUser } from "@/types";
 
-const LoginForm = () => {
+interface LoginFormPromps{
+  currentUser : SafeUser | null
+}
+
+
+const LoginForm: React.FC<LoginFormPromps> = ({currentUser}) => {
   const [isLoading, setIsLoading] = useState(false);
   const {
     register,
@@ -25,6 +31,13 @@ const LoginForm = () => {
   });
 
   const router = useRouter();
+
+  useEffect(() => {
+    if(currentUser){
+      router.push('/cart')
+      router.refresh();
+    }
+  }, []);
 
   const onsubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
@@ -46,6 +59,11 @@ const LoginForm = () => {
     });
   };
 
+  if(currentUser){
+    return <p className="text-cent">Logged in. Redirecting...</
+    p>
+  }
+
   return (
     <>
       <Heading title="Sign in to Mechamongus" />
@@ -53,7 +71,7 @@ const LoginForm = () => {
         outline
         label="Continue with Google"
         icon={AiOutlineGoogle}
-        onClick={() => {}}
+        onClick={() => {signIn("google")}}
       />
       <hr className=" bg-slate-300 w-full h-px" />
       <Input
