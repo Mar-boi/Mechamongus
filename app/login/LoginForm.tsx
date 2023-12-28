@@ -12,12 +12,11 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { SafeUser } from "@/types";
 
-interface LoginFormPromps{
-  currentUser : SafeUser | null
+interface LoginFormProps {
+  currentUser: SafeUser | null;
 }
 
-
-const LoginForm: React.FC<LoginFormPromps> = ({currentUser}) => {
+const LoginForm: React.FC<LoginFormProps> = ({ currentUser }) => {
   const [isLoading, setIsLoading] = useState(false);
   const {
     register,
@@ -33,11 +32,11 @@ const LoginForm: React.FC<LoginFormPromps> = ({currentUser}) => {
   const router = useRouter();
 
   useEffect(() => {
-    if(currentUser){
-      router.push('/cart')
+    if (currentUser) {
+      router.push("/cart");
       router.refresh();
     }
-  }, []);
+  }, [currentUser, router]);
 
   const onsubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
@@ -59,9 +58,8 @@ const LoginForm: React.FC<LoginFormPromps> = ({currentUser}) => {
     });
   };
 
-  if(currentUser){
-    return <p className="text-cent">Logged in. Redirecting...</
-    p>
+  if (currentUser) {
+    return <p className="text-center">Logged in. Redirecting...</p>;
   }
 
   return (
@@ -71,7 +69,9 @@ const LoginForm: React.FC<LoginFormPromps> = ({currentUser}) => {
         outline
         label="Continue with Google"
         icon={AiOutlineGoogle}
-        onClick={() => {signIn("google")}}
+        onClick={() => {
+          signIn("google");
+        }}
       />
       <hr className=" bg-slate-300 w-full h-px" />
       <Input

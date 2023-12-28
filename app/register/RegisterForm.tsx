@@ -13,12 +13,11 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { SafeUser } from "@/types";
 
-interface RegisterFormPromps{
-  currentUser : SafeUser | null
+interface RegisterFormProps {
+  currentUser: SafeUser | null;
 }
 
-
-const RegisterForm: React.FC<RegisterFormPromps> = ({currentUser}) => {
+const RegisterForm: React.FC<RegisterFormProps> = ({ currentUser }) => {
   const [isLoading, setIsLoading] = useState(false);
   const {
     register,
@@ -35,12 +34,11 @@ const RegisterForm: React.FC<RegisterFormPromps> = ({currentUser}) => {
   const router = useRouter();
 
   useEffect(() => {
-    if(currentUser){
-      router.push('/cart')
+    if (currentUser) {
+      router.push("/cart");
       router.refresh();
     }
-  }, []);
-
+  }, [currentUser, router]);
 
   const onsubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
@@ -72,9 +70,8 @@ const RegisterForm: React.FC<RegisterFormPromps> = ({currentUser}) => {
       });
   };
 
-  if(currentUser){
-    return <p className="text-cent">Logged in. Redirecting...</
-    p>
+  if (currentUser) {
+    return <p className="text-cent">Logged in. Redirecting...</p>;
   }
 
   return (
@@ -84,7 +81,9 @@ const RegisterForm: React.FC<RegisterFormPromps> = ({currentUser}) => {
         outline
         label="Continue with Google"
         icon={AiOutlineGoogle}
-        onClick={() => {signIn('google')}}
+        onClick={() => {
+          signIn("google");
+        }}
       />
       <hr className=" bg-slate-300 w-full h-px" />
       <Input

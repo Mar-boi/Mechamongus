@@ -19,6 +19,8 @@ type CartContextType = {
   handleCartQtyIncrease: (product: CartProductType) => void;
   handleCartQtyDecrease: (product: CartProductType) => void;
   handleClearCart: () => void;
+  paymentIntent: string | null;
+  handleSetPaymentIntent: (val: string | null) => void;
 };
 
 export const CartContext = createContext<CartContextType | null>(null);
@@ -33,6 +35,7 @@ export const CartContextProvider = (props: Props) => {
   const [cartProducts, setCartProducts] = useState<CartProductType[] | null>(
     null
   );
+  const [paymentIntent, setPaymentIntent] = useState<string | null>(null);
 
   console.log("qty", cartTotalQty);
   console.log("amount", cartTotalAmount);
@@ -40,8 +43,12 @@ export const CartContextProvider = (props: Props) => {
   useEffect(() => {
     const cartItems: any = localStorage.getItem("Mechamongus_CartItems");
     const cProducts: CartProductType[] | null = JSON.parse(cartItems);
-
+    const MechamongusPaymentIntent: any = localStorage.getItem(
+      "MechamongusPaymentIntent"
+    );
+    const paymentIntent: string | null = JSON.parse(MechamongusPaymentIntent);
     setCartProducts(cProducts);
+    setPaymentIntent(paymentIntent);
   }, []);
 
   useEffect(() => {
@@ -165,7 +172,15 @@ export const CartContextProvider = (props: Props) => {
     setCartProducts(null);
     setCartTotalQty(0);
     localStorage.setItem("Mechamongus_CartItems", JSON.stringify(null));
-  }, []);
+  }, [cartProducts]);
+
+  const handleSetPaymentIntent = useCallback(
+    (val: string | null) => {
+      setPaymentIntent(val);
+      localStorage.setItem("MechamongusPaymentIntent", JSON.stringify(val));
+    },
+    [paymentIntent]
+  );
 
   const value = {
     cartTotalQty,
@@ -176,6 +191,8 @@ export const CartContextProvider = (props: Props) => {
     handleCartQtyIncrease,
     handleCartQtyDecrease,
     handleClearCart,
+    paymentIntent,
+    handleSetPaymentIntent,
   };
   return <CartContext.Provider value={value} {...props} />;
 };
