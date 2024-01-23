@@ -23,5 +23,5 @@ export async function POST(request: Request) {
       price: parseFloat(price),
     },
   });
-  return NextResponse.json(user);
+  return NextResponse.json(product);
 }
