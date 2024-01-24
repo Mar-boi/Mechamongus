@@ -5,6 +5,8 @@ import TextArea from "@/app/components/inputs/TextArea";
 import { useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import CustomCheckBox from "@/app/components/inputs/CustomCheckBox";
+import { categories } from "@/utils/Categories";
+import CategoryInput from "@/app/components/inputs/CategoryInput";
 
 const AddProductForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -26,6 +28,17 @@ const AddProductForm = () => {
       price: "",
     },
   });
+
+  const category = watch("category");
+
+  const setCustomValue = (id: string, value: any) => {
+    setValue(id, value, {
+      shouldValidate: true,
+      shouldDirty: true,
+      shouldTouch: true,
+    });
+  };
+
   return (
     <>
       <Heading title="Add a Product" center />
@@ -70,8 +83,23 @@ const AddProductForm = () => {
       />
       <div className="w-full font-medium">
         <div className="mb-2 font-semibold">Select a Category</div>
-        <div className="grid grid-cols-2 md:grid-cols-3 max-[50vh] overflow-y-auto">
-          {}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 max-[50vh] overflow-y-auto">
+          {categories.map((item) => {
+            if (item.label == "All") {
+              return null;
+            }
+
+            return (
+              <div key={item.label} className="col-span">
+                <CategoryInput
+                  onClick={(category) => setCustomValue("category", category)}
+                  selected={category == item.label}
+                  label={item.label}
+                  icon={item.icon}
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
     </>
