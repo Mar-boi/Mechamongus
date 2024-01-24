@@ -20,7 +20,9 @@ const AdminNavItem: React.FC<AdminNavItemProps> = ({
       }`}
     >
       <Icon size={20} />
-      <div className="font-medium text-sm text-center break-normal"></div>
+      <div className="font-medium text-sm text-center break-normal">
+        {label}
+      </div>
     </div>
   );
 };

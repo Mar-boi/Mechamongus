@@ -1,8 +1,16 @@
-export const metadata = { title: "Mechamongus", description: "PC Ecommerce" };
+import AdminNav from "../components/admin/AdminNav";
+
+export const metadata = {
+  title: "Mechamongus Admin",
+  description: "PC Ecommerce",
+};
 const AdminLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div>
-      <div>Nav</div>\{children}
+      <div>
+        <AdminNav />
+      </div>
+      {children}
     </div>
   );
 };
