@@ -82,7 +82,7 @@ const AddProductForm = () => {
       />
       <div className="w-full font-medium">
         <div className="mb-2 font-semibold">Select a Category</div>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 max-[]: overflow-y-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 max-h[50vh] overflow-auto">
           {categories.map((item) => {
             if (item.label == "All") {
               return null;

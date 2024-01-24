@@ -25,7 +25,7 @@ const CustomCheckBox: React.FC<CustomCheckBoxProps> = ({
         placeholder=""
         className="cursor-pointer"
       />
-      <label htmlFor={id} className="font-medium-pointer">
+      <label htmlFor={id} className="font-medium cursor-pointer">
         {label}
       </label>
     </div>

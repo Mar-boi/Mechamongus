@@ -15,7 +15,7 @@ export const categories = [
     icon: AiFillAccountBook,
   },
   {
-    label: "Labtop",
+    label: "Laptop",
     icon: AiOutlineLaptop,
   },
   {
@@ -31,7 +31,7 @@ export const categories = [
     icon: MdTv,
   },
   {
-    label: "Accesories",
+    label: "Accessories",
     icon: MdOutlineKeyboard,
   },
 ];
