@@ -9,7 +9,7 @@ import { Toaster } from "react-hot-toast";
 
 const google_font = Josefin_Sans({
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["500", "700"],
 });
 
 export const metadata: Metadata = {
