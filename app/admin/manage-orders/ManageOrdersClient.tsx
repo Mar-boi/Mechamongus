@@ -3,62 +3,68 @@
 import { Products } from "@prisma/client";
 import { DataGrid } from '@mui/x-data-grid';
 import { formatPrice } from "@/utils/formatPrice";
-import { MdCached, MdDelete, MdDone, MdRemove } from "react-icons/md";
+import { MdAccessTime, MdAccessTimeFilled, MdCached, MdDelete, MdDeliveryDining, MdDone, MdRemove } from "react-icons/md";
 import { useCallback } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/router";
 import { error } from "console";
 import firebaseApp from "@/libs/firebase";
+import getOrders from "@/actions/getOrders";
 
-interface ManageProductsClientProps{
-    products: Products[]
+interface ManageOrdersClientProps{
+    orders: ExtendedOrders[]
 }
 
-const ManageProductsClient: React.FC<ManageProductsClientProps> = ({products
+ type ExtendedOrders = Order & {
+    user: User
+ }
+
+const ManageOrdersClient: React.FC<ManageOrdersClientProps> = ({
+    orders,
 }) => {
     const router = useRouter();
     const Storage = getStorage(firebaseApp);
     let rows: any = [];
-    if(products){
-        rows = products.map((product)=> {
+    if(orders ){
+        rows = orders.map((orders)=> {
             return  {
-                id: product.id,
-                name: product.name,
-                price: formatPrice(product.price),
-                category: product.brand,
-                inStock: product.inStock,
-                image: product.images,
+                id: orders.id,
+                customer: orders.name,
+                amount: formatPrice(orders.amount / 100),
+                paymentStatus: orders,
+                date: moment(orders.createDate).fromNow(),
+                deliverStatus: orders.deliveryStatus,
             };
         } );
     }
 
     const columns: GridColDef[] = [
         {field: 'id',headerName: 'ID', width: 220},
-        {field: 'name',headerName: 'Name', width: 220}
-        {field: 'price',headerName: 'Price(USD)', width: 100, renderCell :
+        {field: 'customer',headerName: 'Customer Name', width: 130}
+        {field: 'amount',headerName: 'Amount(USD)', width: 100, renderCell :
         (params) =>{
-            return(<div>{params.row.price}</div>
+            return(<div>{params.row.Amount}</div>
             );
         },
     },
-    {field: "cetegory",headerName: "Category",width: 100}, 
-    {field: "name",headerName: "Brand",width: 100}, 
+    {field: "paymentStatus",headerName: "Payment Status",width: 130}, 
+    {field: "deliveryStatus",headerName: "delivery Status",width: 130}, 
     {field: "inStock",headerName: "inStock",width: 120,renderCell: (params)
     =>{
         return (
             <div>
-                {params.row.inStock === true ?(
+                {params.row.inStock === 'pending' ?(
                 <Status
-                text="in stock"
-                icon={MdDone}
-                bg="bg-teal-200"
-                color="text-teal-700"
-                /> ) : (
+                text="pending"
+                icon={MdAccessTimeFilled}
+                bg="bg-slate-200"
+                color="text-slate-700"
+                /> ) : params.row.inStock === 'dispatched' ?(
                 <Status
-                text="out stock"
-                icon={MdDone}
-                bg="bg-rose-200"
-                color="text-teal-700"
+                text="dispatched"
+                icon={MdDeliveryDining}
+                bg="bg-purple-200"
+                color="text-purple-700"
                 )}
                 
             </div>
@@ -151,4 +157,4 @@ return (
 </div> );
 
 
-export default ManageProductsClient;
+export default ManageOrdersClient;
