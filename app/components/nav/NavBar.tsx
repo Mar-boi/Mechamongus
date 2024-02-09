@@ -5,7 +5,7 @@ import CartCount from "./CartCount";
 import UserMenu from "./UserMenu";
 import getCurrentUser from "@/actions/getCurrentUser";
 
-const textLogoBanner = Kdam_Thmor_Pro({ subsets: ["latin"], weight: ["400"] });
+const textLogoBanner = Kdam_Thmor_Pro({ subsets: ["khmer"], weight: ["400"] });
 
 const NavBar = async () => {
   const currentUser = await getCurrentUser();
