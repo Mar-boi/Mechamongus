@@ -7,7 +7,6 @@ import Footer from "./components/footer/Footer";
 import CartProvider from "@/provider/CartProvider";
 import { Toaster } from "react-hot-toast";
 
-
 const google_font = Josefin_Sans({
   subsets: ["latin"],
   weight: ["400", "700"],
@@ -23,8 +22,6 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-
-
   return (
     <html lang="en">
       <body className={`${google_font.className} text-slate-700`}>
