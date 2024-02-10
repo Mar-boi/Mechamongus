@@ -36,12 +36,12 @@ export async function PUT(request: Request) {
   }
 
   const body = await request.json();
-  const { id, inStock } = body;
+  const { id, deliveryStatus } = body;
 
-  const product = await prisma.product.update({
+  const order = await prisma.order.update({
     where: { id: id },
-    data: { inStock },
+    data: { deliveryStatus },
   });
 
-  return NextResponse.json(product);
+  return NextResponse.json(order);
 }

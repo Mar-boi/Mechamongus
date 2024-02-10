@@ -3,17 +3,18 @@
 import { Order,User } from "@prisma/client";
 import { DataGrid, GridColDef} from "@mui/x-data-grid";
 import { formatPrice } from "@/utils/formatPrice";
-import {  MdAccessTimeFilled,MdDeliveryDining, MdDone,MdRemoveRedEye } from "react-icons/md";
-import { useCallback } from "react";
-import toast from "react-hot-toast";
 import Heading from "@/app/components/Heading";
 import Status from "@/app/components/Status";
+import {  MdAccessTimeFilled,MdDeliveryDining, MdDone,MdRemoveRedEye } from "react-icons/md";
+import ActionBtn from "@/app/components/ActionBtn"
+import { useCallback } from "react";
+import toast from "react-hot-toast";
 import axios from "axios";
 import moment from "moment";
-import ActionBtn from "@/app/components/ActionBtn"
+
 import { useRouter } from "next/navigation";
 
-interface ManageOrdersClientProps{
+interface OrdersClientProps{
     orders: ExtendedOrders[];
 }
 
@@ -21,7 +22,7 @@ interface ManageOrdersClientProps{
     user: User
  }
 
-const ManageOrdersClient: React.FC<ManageOrdersClientProps> = ({
+const OrdersClient: React.FC<OrdersClientProps> = ({
     orders,
 }) => {
     const router = useRouter();
@@ -103,12 +104,7 @@ const ManageOrdersClient: React.FC<ManageOrdersClientProps> = ({
  width: 200,
  renderCell: (params) => {
     return <div className="flex justify-between gap-4 w-ull">
-        <ActionBtn icon={MdDeliveryDining} onClick={() =>{
-            handleDispatch(params.row.id);
-        }}/>
-        <ActionBtn icon={MdDone} onClick={() =>{
-            handleDeliver(params.row.id)
-        }}/>
+        
         <ActionBtn icon={MdRemoveRedEye} onClick={() =>{
             router.push(`order/$product/${params.row.id}`);
         }}/>
@@ -116,38 +112,15 @@ const ManageOrdersClient: React.FC<ManageOrdersClientProps> = ({
     }
   }, 
 ];
- const handleDispatch = useCallback((id: string ) => {
-    axios.put("/api/order",{
-        id,
-        deliverStatus: 'dispatched'
-    }).then((res) =>{
-        toast.success('Order Dispatched')
-        router.refresh();
-    }).catch((err) =>{
-        toast.error('Oops! Something went wrong')
-        console.log(err)
-    });
- },[]);
-    const handleDeliver = useCallback((id: string ) => {
-    axios.put("/api/order",{
-        id,
-        deliverStatus: 'delivered'
-    }).then((res) =>{
-        toast.success('Order Delivered')
-        router.refresh();
-    }).catch((err) =>{
-        toast.error('Oops! Something went wrong')
-        console.log(err)
-    });
- },[]);
-
+ 
+   
 
 
 
 return (
 <div className="max-w-[1150px] m-auto">
     <div className="mb-4 mt-8">
-        <Heading title="Manage Orders" center/>
+        <Heading title=" Orders" center/>
     </div>
 
    
@@ -165,8 +138,8 @@ return (
      disableRowSelectionOnClick
      />
     </div>
-</div> );
+</div>);
 };
 
 
-export default ManageOrdersClient;
+export default OrdersClient;

@@ -1,6 +1,6 @@
 import prisma from "@/libs/prismadb";
 
-export default async function getOrders() {
+export default async function getOrdersByUserId(userId: string) {
   try {
     const orders = await prisma.order.findMany({
       include: {
@@ -8,6 +8,9 @@ export default async function getOrders() {
       },
       orderBy: {
         createData: "desc",
+      },
+      where: {
+        userId: userId,
       },
     });
 
