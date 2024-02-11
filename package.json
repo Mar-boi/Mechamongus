@@ -10,9 +10,10 @@
   },
   "dependencies": {
     "@auth/prisma-adapter": "^1.0.11",
-    "@emotion/react": "^11.11.1",
+    "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
-    "@mui/material": "^5.14.18",
+    "@mui/material": "^5.15.9",
+    "@mui/x-data-grid": "^6.19.4",
     "@next-auth/prisma-adapter": "^1.0.7",
     "@prisma/client": "^5.7.1",
     "@stripe/react-stripe-js": "^2.4.0",
@@ -37,7 +38,8 @@
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.12.0",
     "stripe": "^14.13.0",
-    "tailwindcss": "3.3.5"
+    "tailwindcss": "3.3.5",
+    "x-data-grid": "^2.1.0"
   },
   "devDependencies": {
     "@types/node": "20.10.3",

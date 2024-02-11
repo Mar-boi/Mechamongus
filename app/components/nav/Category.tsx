@@ -49,7 +49,10 @@ const Category: React.FC<CategoryProps> = ({ label, icon: Icon, selected }) => {
       className={`flex items-center text-center gap-1 p-2 border-b-2 hover:text-slate-800 transition cursor-pointer ${
         selected ? "border-b-slate-800" : "border-transparent text-slate-500"
       }`}
-    ></div>
+    >
+      <Icon size={20} />
+      <div className=" font-medium text-sm">{label}</div>
+    </div>
   );
 };
 export default Category;
