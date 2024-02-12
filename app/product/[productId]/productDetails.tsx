@@ -1,4 +1,5 @@
-"user client";
+"use client";
+"use sever";
 import Button from "@/app/components/Button";
 import ProductImage from "@/app/components/products/ProductImage";
 import SetColor from "@/app/components/products/SetColor";
