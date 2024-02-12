@@ -12,7 +12,9 @@ const ActionBtn: React.FC<ActionBtnProps> = ({
 }) => {
   return (
     <button
-      className={`flex items-center justify-center rounded cursor-pointer' w-[40px] h-[30px] text-slate-400${
+      disabled={disabled}
+      onClick={onClick}
+      className={`flex items-center justify-center rounded cursor-pointer' w-[40px] h-[30px] text-slate-800 border border-slate-400 ${
         disabled && "opacity-50 cursor-not-allowed"
       }`}
     >

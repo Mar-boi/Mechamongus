@@ -8,7 +8,7 @@ import NullData from "@/app/components/NullData";
 interface IParams {
   productId?: string;
 }
-// eslint-disable-next-line @next/next/no-async-client-component
+
 const Product = async ({ params }: { params: IParams }) => {
   console.log("params ", params);
 

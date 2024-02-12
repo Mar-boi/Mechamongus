@@ -3,7 +3,14 @@
 import { Product } from "@prisma/client";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { formatPrice } from "@/utils/formatPrice";
-import { MdCached, MdDelete, MdDone, MdRemove } from "react-icons/md";
+import {
+  MdCached,
+  MdClose,
+  MdDelete,
+  MdDone,
+  MdRemove,
+  MdRemoveRedEye,
+} from "react-icons/md";
 import { useCallback } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
@@ -47,18 +54,20 @@ const ManageProductsClient: React.FC<ManageProductsClientProps> = ({
       headerName: "Price(THB)",
       width: 100,
       renderCell: (params) => {
-        return <div>{params.row.price}</div>;
+        return (
+          <div className=" font-bold text-slate-800">{params.row.price}</div>
+        );
       },
     },
     { field: "category", headerName: "Category", width: 100 },
-    { field: "name", headerName: "Brand", width: 100 },
+    { field: "brand", headerName: "Brand", width: 100 },
     {
       field: "inStock",
       headerName: "inStock",
       width: 120,
       renderCell: (params) => {
         return (
-          <div>
+          <div className=" font-bold text-slate-800">
             {params.row.inStock === true ? (
               <Status
                 text="in stock"
@@ -69,9 +78,9 @@ const ManageProductsClient: React.FC<ManageProductsClientProps> = ({
             ) : (
               <Status
                 text="out stock"
-                icon={MdDone}
+                icon={MdClose}
                 bg="bg-rose-200"
-                color="text-teal-700"
+                color="text-rose-700"
               />
             )}
           </div>
@@ -84,7 +93,7 @@ const ManageProductsClient: React.FC<ManageProductsClientProps> = ({
       width: 200,
       renderCell: (params) => {
         return (
-          <div className="flex justify-between gap-4 w-ull">
+          <div className="flex justify-between gap-4 w-full">
             <ActionBtn
               icon={MdCached}
               onClick={() => {
@@ -98,7 +107,7 @@ const ManageProductsClient: React.FC<ManageProductsClientProps> = ({
               }}
             />
             <ActionBtn
-              icon={MdRemove}
+              icon={MdRemoveRedEye}
               onClick={() => {
                 router.push(`product/${params.row.id}`);
               }}
@@ -144,7 +153,7 @@ const ManageProductsClient: React.FC<ManageProductsClientProps> = ({
     await handleImageDelete();
 
     axios
-      .delete(`/api/products/${id}`)
+      .delete(`/api/product/${id}`)
       .then((res) => {
         toast.success("Product deleted");
         router.refresh();
@@ -156,7 +165,7 @@ const ManageProductsClient: React.FC<ManageProductsClientProps> = ({
   }, []);
 
   return (
-    <div className="max-w-[1150px] m-auto">
+    <div className="max-w-[1150px] m-auto text-xl">
       <div className="mb-4 mt-8">
         <Heading title="Manage Product" center />
       </div>

@@ -66,7 +66,7 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({
       <div className="mb-6">
         <Heading title="Enter your details to complete checkout" />
       </div>
-      <h2 className=" font-semibold mb-2"> AddressElement</h2>
+      <h2 className=" font-semibold mb-2"> Address</h2>
       <AddressElement
         options={{ mode: "shipping", allowedCountries: ["TH", "US"] }}
       />

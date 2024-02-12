@@ -1,4 +1,3 @@
-"use client";
 import Container from "@/app/components/Container";
 import OrderDetails from "./OrderDetails";
 import getOrderById from "@/actions/getOrderById";

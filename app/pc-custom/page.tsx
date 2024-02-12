@@ -1,10 +1,10 @@
 import Container from "../components/Container";
-import Pc_buildMain from "./Pc_build";
+import Pc_Custom from "./Pc_Custom";
 
 const Pc_build = () => {
   return (
     <Container>
-      <Pc_buildMain></Pc_buildMain>
+      <Pc_Custom></Pc_Custom>
     </Container>
   );
 };

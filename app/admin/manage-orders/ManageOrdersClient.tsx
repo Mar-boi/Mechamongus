@@ -111,8 +111,8 @@ const ManageOrdersClient: React.FC<ManageOrdersClientProps> = ({ orders }) => {
               <Status
                 text="delivered"
                 icon={MdDone}
-                bg="bg-purple-200"
-                color="text-purple-700"
+                bg="bg-green-200"
+                color="text-green-700"
               />
             ) : (
               <></>
@@ -148,7 +148,7 @@ const ManageOrdersClient: React.FC<ManageOrdersClientProps> = ({ orders }) => {
             <ActionBtn
               icon={MdRemoveRedEye}
               onClick={() => {
-                router.push(`order/$product/${params.row.id}`);
+                router.push(`/order/${params.row.id}`);
               }}
             />
           </div>
@@ -176,7 +176,7 @@ const ManageOrdersClient: React.FC<ManageOrdersClientProps> = ({ orders }) => {
     axios
       .put("/api/order", {
         id,
-        deliverStatus: "delivered",
+        deliveryStatus: "delivered",
       })
       .then((res) => {
         toast.success("Order Delivered");
@@ -189,7 +189,7 @@ const ManageOrdersClient: React.FC<ManageOrdersClientProps> = ({ orders }) => {
   }, []);
 
   return (
-    <div className="max-w-[1150px] m-auto">
+    <div className="max-w-[1150px] m-auto text-xl">
       <div className="mb-4 mt-8">
         <Heading title="Manage Orders" center />
       </div>
