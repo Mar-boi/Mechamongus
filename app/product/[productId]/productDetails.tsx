@@ -8,6 +8,7 @@ import { useCart } from "@/hooks/useCart";
 import { Rating } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { MdCheckCircle } from "react-icons/md";
 
 interface productDetailsProps {
@@ -54,8 +55,6 @@ const ProductDetails: React.FC<productDetailsProps> = ({ product }) => {
 
   const router = useRouter();
 
-  console.log(cartTotalQty);
-  console.log(cartProducts);
   useEffect(() => {
     setIsProductInCart(false);
     if (cartProducts) {
@@ -85,7 +84,7 @@ const ProductDetails: React.FC<productDetailsProps> = ({ product }) => {
 
   const handleQtyIncrease = useCallback(() => {
     if (cartProduct.quantity == 99) {
-      return;
+      return toast.error("Ooop! Maximum reached");
     }
     setCartProduct((prev) => {
       return { ...prev, qty: ++prev.quantity };
@@ -93,7 +92,7 @@ const ProductDetails: React.FC<productDetailsProps> = ({ product }) => {
   }, [cartProduct]);
   const handleQtyDecrease = useCallback(() => {
     if (cartProduct.quantity == 1) {
-      return;
+      return toast.error("Ooop! Minimum reached");
     }
     setCartProduct((prev) => {
       return { ...prev, qty: --prev.quantity };

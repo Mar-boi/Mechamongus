@@ -172,15 +172,12 @@ export const CartContextProvider = (props: Props) => {
     setCartProducts(null);
     setCartTotalQty(0);
     localStorage.setItem("Mechamongus_CartItems", JSON.stringify(null));
-  }, [cartProducts]);
+  }, []);
 
-  const handleSetPaymentIntent = useCallback(
-    (val: string | null) => {
-      setPaymentIntent(val);
-      localStorage.setItem("MechamongusPaymentIntent", JSON.stringify(val));
-    },
-    [paymentIntent]
-  );
+  const handleSetPaymentIntent = useCallback((val: string | null) => {
+    setPaymentIntent(val);
+    localStorage.setItem("MechamongusPaymentIntent", JSON.stringify(val));
+  }, []);
 
   const value = {
     cartTotalQty,
