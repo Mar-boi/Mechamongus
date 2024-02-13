@@ -1,10 +1,15 @@
+import getProducts, { IProductParams } from "@/actions/getProducts";
 import Container from "../components/Container";
 import Pc_Custom from "./Pc_Custom";
 
-const Pc_build = () => {
+interface HomeProps {
+  searchParams: IProductParams;
+}
+
+const Pc_build = async ({ searchParams }: HomeProps) => {
   return (
     <Container>
-      <Pc_Custom></Pc_Custom>
+      <Pc_Custom searchParams={searchParams}></Pc_Custom>
     </Container>
   );
 };
