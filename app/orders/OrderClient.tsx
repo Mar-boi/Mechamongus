@@ -35,7 +35,7 @@ const OrdersClient: React.FC<OrdersClientProps> = ({ orders }) => {
         amount: formatPrice(orders.amount),
         paymentStatus: orders.status,
         date: moment(orders.createData).fromNow(),
-        deliverStatus: orders.deliveryStatus,
+        deliveryStatus: orders.deliveryStatus,
       };
     });
   }
@@ -88,19 +88,26 @@ const OrdersClient: React.FC<OrdersClientProps> = ({ orders }) => {
       renderCell: (params) => {
         return (
           <div>
-            {params.row.deliverStatus === "pending" ? (
+            {params.row.deliveryStatus === "pending" ? (
               <Status
                 text="pending"
                 icon={MdAccessTimeFilled}
                 bg="bg-slate-200"
                 color="text-slate-700"
               />
-            ) : params.row.deliverStatus == "dispatched" ? (
+            ) : params.row.deliveryStatus == "dispatched" ? (
               <Status
                 text="dispatched"
                 icon={MdDeliveryDining}
                 bg="bg-purple-200"
                 color="text-purple-700"
+              />
+            ) : params.row.deliveryStatus === "delivered" ? (
+              <Status
+                text="delivered"
+                icon={MdDone}
+                bg="bg-green-200"
+                color="text-green-700"
               />
             ) : (
               <></>

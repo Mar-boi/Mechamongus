@@ -15,12 +15,6 @@ const Pc_Custom = async ({ searchParams }: HomeProps) => {
   const products = await getProducts(searchParams);
   const currentUser = await getCurrentUser();
 
-  if (products.length == 0) {
-    return (
-      <NullData title='Oops! No products found. Click "All" to clear filters' />
-    );
-  }
-
   function shuffleArray(array: any) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -33,9 +27,9 @@ const Pc_Custom = async ({ searchParams }: HomeProps) => {
   return (
     <div className="m-5">
       <Heading title="Custom PC" center />
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12    max-w-[1920px]    mx-auto   xl:px-20   md:px-2   px-4 m-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12    max-w-[1920px] m-5">
         <div className="relative  h-auto overflow-hidden rounded-xl border border-gray-200 bg-white shadow-md">
-          <div className="p-5">
+          <div className="p-4">
             <Pc_cus_cart currentUser={currentUser} />
           </div>
         </div>

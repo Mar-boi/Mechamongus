@@ -30,7 +30,7 @@ export type CartProductType = {
 const Pc_Cus_Card: React.FC<ProductCardProps> = ({ data, product }) => {
   const { handleAddProductToCart, cartProducts } = useCart();
   const [IsProductInCart, setIsProductInCart] = useState(false);
-
+  const router = useRouter();
   useEffect(() => {
     setIsProductInCart(false);
     if (cartProducts) {
@@ -72,6 +72,7 @@ const Pc_Cus_Card: React.FC<ProductCardProps> = ({ data, product }) => {
     hover:scale-105 
     text-center 
     text-sm"
+      // onClick={() => router.push(`/product/${data.id}`)}
     >
       <div
         className="
