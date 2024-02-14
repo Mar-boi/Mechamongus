@@ -8,7 +8,7 @@ const FormWarp = ({ children }: { children: React.ReactNode }) => {
         items-center
         justify-center
         pb-12
-        pt-24
+        pt-5
         "
     >
       <div

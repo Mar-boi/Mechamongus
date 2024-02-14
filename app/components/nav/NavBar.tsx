@@ -4,7 +4,7 @@ import { Kdam_Thmor_Pro } from "next/font/google";
 import CartCount from "./CartCount";
 import UserMenu from "./UserMenu";
 import getCurrentUser from "@/actions/getCurrentUser";
-import Categories from "./Categoties";
+import Categories from "./Categories";
 import SearchBar from "./SearchBar";
 
 const textLogoBanner = Kdam_Thmor_Pro({
@@ -26,10 +26,18 @@ const NavBar = async () => {
             >
               Mechamongus
             </Link>
+            <div className="w-[7%]"></div>
             <div className="hidden md:block">
               <SearchBar />
             </div>
+            <div></div>
             <div className="flex items-center gap-8 md:gap-12">
+              <Link
+                href="/pc-custom"
+                className={`${textLogoBanner.className} font-bold text-2xl`}
+              >
+                Custom
+              </Link>
               <CartCount />
               <UserMenu currentUser={currentUser} />
             </div>

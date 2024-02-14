@@ -47,8 +47,10 @@ const SearchBar = () => {
       <button
         onClick={handleSubmit(onSubmit)}
         className="bg-slate-700 hover:opacity-80 text-white p-2 rounded-r-md"
-      />
-      Search
+      >
+        {" "}
+        Search
+      </button>
     </div>
   );
 };

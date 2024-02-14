@@ -13,24 +13,26 @@ const Footer = () => {
      justify-between pt-16 pb-8"
         >
           <FooterList>
-            <h3 className="text-base font-bold mb-6">Shop Categolists</h3>
-            <Link href="#">CPU</Link>
-            <Link href="#">Ram</Link>
-            <Link href="#">Case</Link>
-            <Link href="#">Mainbord</Link>
-            <Link href="#">Power Subply</Link>
+            <h3 className="text-base font-bold mb-6">Shop Categories</h3>
+            <Link href="/?category=CPU">CPU</Link>
+            <Link href="/?category=Ram">Ram</Link>
+            <Link href="/?category=Case">Case</Link>
+            <Link href="/?category=Mainboard">Mainboard</Link>
+            <Link href="/?category=Power Supply">Power Supply</Link>
+            <Link href="/?category=HARD DISK/SSD">HARD DISK/SSD</Link>
           </FooterList>
           <FooterList>
-            <h3 className="text-base font-bold mb-6">Shop Categolists</h3>
-            <Link href="#">CPU</Link>
-            <Link href="#">Ram</Link>
-            <Link href="#">Case</Link>
-            <Link href="#">Mainbord</Link>
-            <Link href="#">Power Subply</Link>
+            <h3 className="text-base font-bold mb-6">Shop Categories</h3>
+            <Link href="/?category=CPU">CPU</Link>
+            <Link href="/?category=Ram">Ram</Link>
+            <Link href="/?category=Case">Case</Link>
+            <Link href="/?category=Mainboard">Mainboard</Link>
+            <Link href="/?category=Power Supply">Power Supply</Link>
+            <Link href="/?category=HARD DISK/SSD">HARD DISK/SSD</Link>
           </FooterList>
           <div className="w-full md:w-1/3 mb-6 md:mb-0">
             <h3 className="text-base font-bold mb-6">About Us</h3>
-            <p>Computer Assesories Ecommerce-Website</p>
+            <p>Computer Accessories Ecommerce-Website</p>
             <p>
               &copy; {new Date().getFullYear()} Mechamongus. All rights reserved{" "}
             </p>

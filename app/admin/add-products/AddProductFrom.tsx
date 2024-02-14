@@ -10,7 +10,6 @@ import CategoryInput from "@/app/components/inputs/CategoryInput";
 import { colors } from "@/utils/Colors";
 import SelectColor from "@/app/components/inputs/SelectColor";
 import Button from "@/app/components/Button";
-import { data } from "autoprefixer";
 import toast from "react-hot-toast";
 import firebaseApp from "@/libs/firebase";
 import {
@@ -19,9 +18,6 @@ import {
   ref,
   uploadBytesResumable,
 } from "firebase/storage";
-import { resolve } from "path";
-import { rejects } from "assert";
-import { error } from "console";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 
@@ -230,7 +226,7 @@ const AddProductForm = () => {
       />
       <div className="w-full font-medium">
         <div className="mb-2 font-semibold">Select a Category</div>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 max-h[50vh] overflow-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 max-h-[50vh] overflow-auto">
           {categories.map((item) => {
             if (item.label == "All") {
               return null;

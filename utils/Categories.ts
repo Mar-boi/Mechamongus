@@ -1,9 +1,10 @@
-import {
-  AiFillAccountBook,
-  AiOutlineDesktop,
-  AiOutlineLaptop,
-} from "react-icons/ai";
-import { MdOutlineKeyboard, MdStorefront, MdTv, MdWatch } from "react-icons/md";
+import { AiOutlineHdd } from "react-icons/ai";
+import { CgSmartphoneRam } from "react-icons/cg";
+import { PiComputerTower } from "react-icons/pi";
+import { BsCpu } from "react-icons/bs";
+import { PiRectangle } from "react-icons/pi";
+import { MdOutlineDeveloperBoard } from "react-icons/md";
+import { MdStorefront } from "react-icons/md";
 
 export const categories = [
   {
@@ -11,27 +12,27 @@ export const categories = [
     icon: MdStorefront,
   },
   {
-    label: "Phone",
-    icon: AiFillAccountBook,
+    label: "CPU",
+    icon: BsCpu,
   },
   {
-    label: "Laptop",
-    icon: AiOutlineLaptop,
+    label: "Ram",
+    icon: CgSmartphoneRam,
   },
   {
-    label: "Desktop",
-    icon: AiOutlineDesktop,
+    label: "Case",
+    icon: PiComputerTower,
   },
   {
-    label: "Watch",
-    icon: MdWatch,
+    label: "Mainboard",
+    icon: MdOutlineDeveloperBoard,
   },
   {
-    label: "Tv",
-    icon: MdTv,
+    label: "Power Supply",
+    icon: PiRectangle,
   },
   {
-    label: "Accessories",
-    icon: MdOutlineKeyboard,
+    label: "HARD DISK/SSD",
+    icon: AiOutlineHdd,
   },
 ];

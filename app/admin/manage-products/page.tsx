@@ -13,11 +13,9 @@ const ManageProducts = async () => {
   }
 
   return (
-    <div className="pt-8">
-      <Container>
-        <ManageProductsClient products={products} />
-      </Container>
-    </div>
+    <Container>
+      <ManageProductsClient products={products} />
+    </Container>
   );
 };
 
