@@ -1,6 +1,6 @@
 "use client";
 
-import { formatPrice } from "@/utils/fomatPrice";
+import { formatPrice } from "@/utils/formatPrice";
 import { truncateText } from "@/utils/truncateText";
 import Image from "next/image";
 import { Rating } from "@mui/material";
@@ -23,7 +23,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
       className=" 
     col-span-1 
     cursor-pointer 
-    border-{1.2px} 
+    border-[1.2px] 
     border-slate-200 
     bg-slate-200 
     rounded-sm p-2 
