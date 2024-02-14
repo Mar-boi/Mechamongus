@@ -100,7 +100,7 @@ const Pc_Cus_Card: React.FC<ProductCardProps> = ({ data, product }) => {
             <MdCheckCircle className=" text-teal-400" size={35} />
             <span>Product added to cart</span>
           </>
-        ) : (
+        ) : product.inStock ? (
           <>
             <div className="max-w-[300px]">
               <Button
@@ -111,6 +111,10 @@ const Pc_Cus_Card: React.FC<ProductCardProps> = ({ data, product }) => {
                 }}
               />
             </div>
+          </>
+        ) : (
+          <>
+            <div className="max-w-[300px] text-rose-400">Out Of Stock</div>
           </>
         )}
       </div>
