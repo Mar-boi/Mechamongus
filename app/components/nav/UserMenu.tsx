@@ -8,7 +8,6 @@ import MenuItem from "./MenuItem";
 import { signOut } from "next-auth/react";
 import BackDrops from "./BackDrops";
 import { SafeUser } from "@/types";
-import { getCurrentUser } from "@/actions/getCurrentUser";
 
 interface UserMenuProps {
   currentUser: SafeUser | null;

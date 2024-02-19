@@ -5,6 +5,7 @@ import { BsCpu } from "react-icons/bs";
 import { PiRectangle } from "react-icons/pi";
 import { MdOutlineDeveloperBoard } from "react-icons/md";
 import { MdStorefront } from "react-icons/md";
+import { BsGpuCard } from "react-icons/bs";
 
 export const categories = [
   {
@@ -34,5 +35,9 @@ export const categories = [
   {
     label: "HARD DISK/SSD",
     icon: AiOutlineHdd,
+  },
+  {
+    label: "Graphic Card",
+    icon: BsGpuCard,
   },
 ];
