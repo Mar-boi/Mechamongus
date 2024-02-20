@@ -16,7 +16,13 @@ const NavBar = async () => {
   const currentUser = await getCurrentUser();
 
   return (
-    <div className="sticky top-0 w-full bg-slate-200 z-30 shadow-sm">
+    <div
+      className="sticky top-0 w-full bg-slate-200 z-30 shadow-sm"
+      style={{
+        background:
+          "-webkit-gradient(linear, left top, right top, from(#F9F9F9), color-stop(40%, #F3F8FF),color-stop(70%, #DEECFF))",
+      }}
+    >
       <div className="py-4 border-b-[1px]">
         <Container>
           <div className="flex items-center justify-between gap-3 md:gap-0">

@@ -6,6 +6,7 @@ import { PiRectangle } from "react-icons/pi";
 import { MdOutlineDeveloperBoard } from "react-icons/md";
 import { MdStorefront } from "react-icons/md";
 import { BsGpuCard } from "react-icons/bs";
+import { FaComputer } from "react-icons/fa6";
 
 export const categories = [
   {
@@ -21,8 +22,8 @@ export const categories = [
     icon: CgSmartphoneRam,
   },
   {
-    label: "Case",
-    icon: PiComputerTower,
+    label: "Graphic Card",
+    icon: BsGpuCard,
   },
   {
     label: "Mainboard",
@@ -36,8 +37,13 @@ export const categories = [
     label: "HARD DISK/SSD",
     icon: AiOutlineHdd,
   },
+
   {
-    label: "Graphic Card",
-    icon: BsGpuCard,
+    label: "Case",
+    icon: PiComputerTower,
+  },
+  {
+    label: "Computer Set",
+    icon: FaComputer,
   },
 ];
