@@ -102,7 +102,7 @@ const Pc_Cus_Card: React.FC<ProductCardProps> = ({ data, product }) => {
           </>
         ) : product.inStock ? (
           <>
-            <div className="max-w-[300px]">
+            <div className=" justify-end items-end">
               <Button
                 outline
                 label="Add To Cart"

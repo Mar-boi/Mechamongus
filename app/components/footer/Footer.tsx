@@ -20,6 +20,7 @@ const Footer = () => {
             <Link href="/?category=Mainboard">Mainboard</Link>
             <Link href="/?category=Power Supply">Power Supply</Link>
             <Link href="/?category=HARD DISK/SSD">HARD DISK/SSD</Link>
+            <Link href="/?category=Computer Set">Computer Set</Link>
           </FooterList>
 
           <div className="w-full md:w-1/3 mb-6 md:mb-0">
