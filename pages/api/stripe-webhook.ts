@@ -1,5 +1,5 @@
+import { buffer } from "micro";
 import { NextApiRequest, NextApiResponse } from "next";
-import { buffer } from "stream/consumers";
 import Stripe from "stripe";
 
 export const config = {
