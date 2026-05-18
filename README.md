@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Mechamongus 🚀
 
-## Getting Started
+> **Note:** This Project is made for learning to develop websites using React.
 
-First, run the development server:
+Welcome to the **Mechamongus** repository! This is a comprehensive, full-stack web application built to explore and learn modern web development technologies and best practices within the React ecosystem.
+
+## 🛠️ Tech Stack
+
+This project leverages a powerful and modern tech stack:
+
+- **Framework**: [Next.js](https://nextjs.org/) (App/Pages Router)
+- **Library**: [React](https://reactjs.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) & [Material-UI](https://mui.com/)
+- **Database ORM**: [Prisma](https://www.prisma.io/)
+- **Authentication**: [NextAuth.js](https://next-auth.js.org/)
+- **Payments**: [Stripe](https://stripe.com/)
+- **Backend as a Service**: [Firebase](https://firebase.google.com/)
+- **Charts & Data Visualization**: [Chart.js](https://www.chartjs.org/)
+
+## 🚀 Getting Started
+
+Follow these steps to run the project locally on your machine.
+
+### 1. Clone the repository
 
 ```bash
+git clone git@github.com:Mar-boi/Mechamongus.git
+cd Mechamongus
+```
+
+### 2. Install dependencies
+
+Since this project uses `bun` (or npm), you can install the required packages by running:
+
+```bash
+bun install
+# or
+npm install
+```
+
+### 3. Set up Environment Variables
+
+Create a `.env` file in the root directory. You can use the provided `.env.example` as a reference:
+
+```bash
+cp .env.example .env
+```
+
+Make sure to fill in all the required API keys and database URIs in your new `.env` file.
+
+### 4. Setup Prisma Database
+
+Push the database schema and generate the Prisma client:
+
+```bash
+bunx prisma generate
+bunx prisma db push
+```
+
+### 5. Run the Development Server
+
+Start the application in development mode:
+
+```bash
+bun run dev
+# or
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📚 Learning Objectives
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+As stated, this project serves as a practical learning playground to master:
 
-## Learn More
+- Building scalable user interfaces with React and Next.js.
+- Integrating secure Authentication flows.
+- Interacting with databases using Prisma ORM.
+- Handling real-world payment processing with Stripe.
+- Creating responsive designs using Tailwind CSS.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
-* This Projcet is make for learning to develop website by react
+_Happy Coding!_ 💻
